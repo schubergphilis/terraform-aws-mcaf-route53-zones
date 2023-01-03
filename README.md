@@ -25,7 +25,7 @@ To establish a chain of trust for DNSSEC, you must update the parent zone for yo
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| name | This is the name of the hosted zone | `string` | n/a | yes |
+| name | The hosted zone name | `string` | n/a | yes |
 | tags | Map of tags to set on Terraform created resources | `map(string)` | n/a | yes |
 | comment | A comment for the hosted zone. Defaults to 'Managed by Terraform' | `string` | `null` | no |
 | delegation\_set\_id | The ID of the reusable delegation set whose NS records you want to assign to the hosted zone. Conflicts with vpc as delegation sets can only be used for public zones | `string` | `null` | no |
