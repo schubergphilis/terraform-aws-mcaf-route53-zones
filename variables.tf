@@ -33,7 +33,7 @@ variable "kms_signing_key_settings" {
 
 variable "name" {
   type        = string
-  description = "This is the name of the hosted zone"
+  description = "The hosted zone name"
 }
 
 variable "tags" {
