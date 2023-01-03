@@ -71,7 +71,7 @@ resource "aws_kms_key" "dnssec" {
 
   customer_master_key_spec = "ECC_NIST_P256"
   deletion_window_in_days  = var.kms_signing_key_settings.deletion_window_in_days
-  enable_key_rotation      = var.kms_signing_key_settings.enable_key_rotation
+  enable_key_rotation      = false // AWS only support automatic key rotation for symmetric keys
   key_usage                = "SIGN_VERIFY"
   policy                   = data.aws_iam_policy_document.dnssec_signing.json
 }
