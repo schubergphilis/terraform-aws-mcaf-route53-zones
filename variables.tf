@@ -1,8 +1,3 @@
-variable "name" {
-  type        = string
-  description = "This is the name of the hosted zone"
-}
-
 variable "comment" {
   type        = string
   default     = null
@@ -25,6 +20,20 @@ variable "force_destroy" {
   type        = bool
   default     = false
   description = "Whether to destroy all records (possibly managed outside of Terraform) in the zone when destroying the zone"
+}
+
+variable "kms_signing_key_settings" {
+  type = object({
+    deletion_window_in_days = optional(number, 30)
+    enable_key_rotation     = optional(bool, true)
+  })
+  default     = {}
+  description = "KMS Key settings used for zone signing"
+}
+
+variable "name" {
+  type        = string
+  description = "The hosted zone name"
 }
 
 variable "tags" {
