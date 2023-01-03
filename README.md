@@ -31,7 +31,7 @@ To establish a chain of trust for DNSSEC, you must update the parent zone for yo
 | delegation\_set\_id | The ID of the reusable delegation set whose NS records you want to assign to the hosted zone. Conflicts with vpc as delegation sets can only be used for public zones | `string` | `null` | no |
 | dnssec | Wheter or not to enable DNSSEC signing for this zone | `bool` | `false` | no |
 | force\_destroy | Whether to destroy all records (possibly managed outside of Terraform) in the zone when destroying the zone | `bool` | `false` | no |
-| kms\_signing\_key\_settings | KMS Key settings used for zone signing | <pre>object({<br>    deletion_window_in_days = optional(number, 30)<br>    enable_key_rotation     = optional(bool, true)<br>  })</pre> | `{}` | no |
+| kms\_signing\_key\_settings | KMS Key settings used for zone signing | <pre>object({<br>    deletion_window_in_days = optional(number, 30)<br>  })</pre> | `{}` | no |
 | vpc | n/a | <pre>map(object({<br>    vpc_id     = string<br>    vpc_region = string<br>  }))</pre> | <pre>{<br>  "key": {<br>    "vpc_id": null,<br>    "vpc_region": null<br>  }<br>}</pre> | no |
 
 ## Outputs

@@ -25,7 +25,6 @@ variable "force_destroy" {
 variable "kms_signing_key_settings" {
   type = object({
     deletion_window_in_days = optional(number, 30)
-    enable_key_rotation     = optional(bool, true)
   })
   default     = {}
   description = "KMS Key settings used for zone signing"
