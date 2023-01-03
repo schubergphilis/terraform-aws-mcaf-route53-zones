@@ -70,7 +70,8 @@ resource "aws_kms_key" "dnssec" {
   provider = aws.kms
 
   customer_master_key_spec = "ECC_NIST_P256"
-  deletion_window_in_days  = 7
+  deletion_window_in_days  = var.kms_signing_key_settings.deletion_window_in_days
+  enable_key_rotation      = var.kms_signing_key_settings.enable_key_rotation
   key_usage                = "SIGN_VERIFY"
   policy                   = data.aws_iam_policy_document.dnssec_signing.json
 }
