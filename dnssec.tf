@@ -1,8 +1,3 @@
-provider "aws" {
-  alias  = "kms"
-  region = "us-east-1"
-}
-
 data "aws_caller_identity" "current" {}
 
 data "aws_iam_policy_document" "dnssec_signing" {
@@ -19,13 +14,8 @@ data "aws_iam_policy_document" "dnssec_signing" {
   }
 
   statement {
-    sid = "Allow Route 53 DNSSEC Service"
-    actions = [
-      "kms:DescribeKey",
-      "kms:GetPublicKey",
-      "kms:Sign",
-    ]
-    effect    = "Allow"
+    sid       = "Allow Route 53 DNSSEC Service"
+    actions   = ["kms:DescribeKey", "kms:GetPublicKey", "kms:Sign", ]
     resources = ["*"]
 
     condition {
@@ -49,7 +39,6 @@ data "aws_iam_policy_document" "dnssec_signing" {
   statement {
     sid       = "Allow Route 53 DNSSEC to CreateGrant"
     actions   = ["kms:CreateGrant"]
-    effect    = "Allow"
     resources = ["*"]
 
     condition {
@@ -88,8 +77,4 @@ resource "aws_route53_hosted_zone_dnssec" "default" {
   count = var.dnssec ? 1 : 0
 
   hosted_zone_id = aws_route53_key_signing_key.default[0].hosted_zone_id
-
-  depends_on = [
-    aws_route53_key_signing_key.default[0]
-  ]
 }

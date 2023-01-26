@@ -1,33 +1,35 @@
 variable "comment" {
   type        = string
   default     = null
-  description = "A comment for the hosted zone. Defaults to 'Managed by Terraform'"
+  description = "Comment for the hosted zone"
 }
 
 variable "delegation_set_id" {
   type        = string
   default     = null
-  description = "The ID of the reusable delegation set whose NS records you want to assign to the hosted zone. Conflicts with vpc as delegation sets can only be used for public zones"
+  description = "Delegation set ID whose NS records will be used by the hosted zone; conflicts with `var.vpc` as delegation sets can only be used with public zones"
 }
 
 variable "dnssec" {
   type        = bool
   default     = false
-  description = "Wheter or not to enable DNSSEC signing for this zone"
+  description = "Set to true to enable DNSSEC signing"
 }
 
 variable "force_destroy" {
   type        = bool
   default     = false
-  description = "Whether to destroy all records (possibly managed outside of Terraform) in the zone when destroying the zone"
+  description = "Set to true to destroy all records when destroying the managed zone"
 }
 
 variable "kms_signing_key_settings" {
   type = object({
     deletion_window_in_days = optional(number, 30)
   })
-  default     = {}
-  description = "KMS Key settings used for zone signing"
+  default = {
+    deletion_window_in_days = 30
+  }
+  description = "KMS key settings used for zone signing"
 }
 
 variable "name" {
@@ -41,14 +43,10 @@ variable "tags" {
 }
 
 variable "vpc" {
-  type = map(object({
-    vpc_id     = string
-    vpc_region = string
-  }))
-  default = {
-    "key" = {
-      vpc_id     = null
-      vpc_region = null
-    }
-  }
+  type = object({
+    id     = string
+    region = string
+  })
+  default     = null
+  description = "VPC ID and region; conflicts with `var.delegation_set_id`"
 }
