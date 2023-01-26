@@ -1,8 +1,3 @@
-provider "aws" {
-  alias  = "kms"
-  region = "us-east-1"
-}
-
 data "aws_caller_identity" "current" {}
 
 data "aws_iam_policy_document" "dnssec_signing" {
