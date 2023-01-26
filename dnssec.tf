@@ -1,11 +1,12 @@
 data "aws_caller_identity" "current" {}
+data "aws_region" "default" {}
 
 data "aws_iam_policy_document" "dnssec_signing" {
   statement {
     sid       = "Enable IAM User Permissions"
     actions   = ["kms:*"]
     effect    = "Allow"
-    resources = ["*"]
+    resources = ["arn:aws:kms:${data.aws_region.default.name}:${data.aws_caller_identity.current.account_id}:key/*"]
 
     principals {
       type        = "AWS"
@@ -21,7 +22,7 @@ data "aws_iam_policy_document" "dnssec_signing" {
       "kms:Sign",
     ]
     effect    = "Allow"
-    resources = ["*"]
+    resources = ["arn:aws:kms:${data.aws_region.default.name}:${data.aws_caller_identity.current.account_id}:key/*"]
 
     condition {
       test     = "StringEquals"
@@ -45,7 +46,7 @@ data "aws_iam_policy_document" "dnssec_signing" {
     sid       = "Allow Route 53 DNSSEC to CreateGrant"
     actions   = ["kms:CreateGrant"]
     effect    = "Allow"
-    resources = ["*"]
+    resources = ["arn:aws:kms:${data.aws_region.default.name}:${data.aws_caller_identity.current.account_id}:key/*"]
 
     condition {
       test     = "Bool"
