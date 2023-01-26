@@ -38,6 +38,7 @@ variable "name" {
 variable "tags" {
   type        = map(string)
   description = "Map of tags to set on Terraform created resources"
+  default     = {}
 }
 
 variable "vpc" {
