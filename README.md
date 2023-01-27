@@ -6,7 +6,7 @@ Terraform module to setup and manage route53 zones.
 
 To establish a chain of trust for DNSSEC, you must update the parent zone for your hosted zone with a DNSSEC 'DS' record.
 
-<!--- BEGIN_TF_DOCS --->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -42,4 +42,4 @@ To establish a chain of trust for DNSSEC, you must update the parent zone for yo
 | route53\_zone\_name\_servers | Name servers of Route53 zone |
 | route53\_zone\_zone\_id | Zone ID of Route53 zone |
 
-<!--- END_TF_DOCS --->
+<!-- END_TF_DOCS -->
