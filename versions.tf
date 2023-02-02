@@ -1,7 +1,10 @@
 terraform {
-  required_version = ">= 0.13.1"
-
   required_providers {
-    aws = ">= 3.67"
+    aws = {
+      version               = ">= 3.67"
+      configuration_aliases = [aws.kms]
+    }
   }
+
+  required_version = ">= 1.3"
 }
