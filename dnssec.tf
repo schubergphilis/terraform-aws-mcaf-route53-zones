@@ -1,29 +1,33 @@
-data "aws_caller_identity" "current" {}
+data "aws_caller_identity" "kms" {
+  provider = aws.kms
+}
 
-data "aws_region" "current" {}
+data "aws_region" "kms" {
+  provider = aws.kms
+}
 
 data "aws_iam_policy_document" "dnssec_signing" {
   statement {
     sid       = "Enable IAM User Permissions"
     actions   = ["kms:*"]
     effect    = "Allow"
-    resources = ["arn:aws:kms:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:key/*"]
+    resources = ["arn:aws:kms:${data.aws_region.kms.name}:${data.aws_caller_identity.kms.account_id}:key/*"]
 
     principals {
       type        = "AWS"
-      identifiers = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"]
+      identifiers = ["arn:aws:iam::${data.aws_caller_identity.kms.account_id}:root"]
     }
   }
 
   statement {
     sid       = "Allow Route 53 DNSSEC Service"
     actions   = ["kms:DescribeKey", "kms:GetPublicKey", "kms:Sign", ]
-    resources = ["arn:aws:kms:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:key/*"]
+    resources = ["arn:aws:kms:${data.aws_region.kms.name}:${data.aws_caller_identity.kms.account_id}:key/*"]
 
     condition {
       test     = "StringEquals"
       variable = "aws:SourceAccount"
-      values   = ["${data.aws_caller_identity.current.account_id}"]
+      values   = ["${data.aws_caller_identity.kms.account_id}"]
     }
 
     condition {
@@ -41,7 +45,7 @@ data "aws_iam_policy_document" "dnssec_signing" {
   statement {
     sid       = "Allow Route 53 DNSSEC to CreateGrant"
     actions   = ["kms:CreateGrant"]
-    resources = ["arn:aws:kms:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:key/*"]
+    resources = ["arn:aws:kms:${data.aws_region.kms.name}:${data.aws_caller_identity.kms.account_id}:key/*"]
 
     condition {
       test     = "Bool"
