@@ -37,6 +37,14 @@ variable "name" {
   description = "The hosted zone name"
 }
 
+variable "dns_query_logging" {
+  type = object({
+    retention_in_days = number
+  })
+  default     = null
+  description = "Enable public DNS query logging for the hosted zone"
+}
+
 variable "tags" {
   type        = map(string)
   description = "Map of tags to set on Terraform created resources"
