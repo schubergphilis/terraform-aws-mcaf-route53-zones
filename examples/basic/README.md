@@ -20,6 +20,7 @@ No providers.
 |------|--------|---------|
 | <a name="module_for_each"></a> [for\_each](#module\_for\_each) | ../.. | n/a |
 | <a name="module_one"></a> [one](#module\_one) | ../.. | n/a |
+| <a name="module_query_logging"></a> [query\_logging](#module\_query\_logging) | ../.. | n/a |
 
 ## Resources
 
