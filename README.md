@@ -6,6 +6,12 @@ Terraform module to setup and manage route53 zones.
 
 To establish a chain of trust for DNSSEC, you must update the parent zone for your hosted zone with a DNSSEC 'DS' record.
 
+Additionally, using this feature [requires an AWS provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_hosted_zone_dnssec) in region `us-east-1`.
+
+## DNS Query Logging
+
+Using this feature [requires an AWS provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_query_log) in region `us-east-1`.
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
