@@ -10,6 +10,14 @@ variable "delegation_set_id" {
   description = "Delegation set ID whose NS records will be used by the hosted zone; conflicts with `var.vpc` as delegation sets can only be used with public zones"
 }
 
+variable "dns_query_logging" {
+  type = object({
+    retention_in_days = number
+  })
+  default     = null
+  description = "Enable public DNS query logging for the hosted zone"
+}
+
 variable "dnssec" {
   type        = bool
   default     = false
@@ -35,14 +43,6 @@ variable "kms_signing_key_settings" {
 variable "name" {
   type        = string
   description = "The hosted zone name"
-}
-
-variable "dns_query_logging" {
-  type = object({
-    retention_in_days = number
-  })
-  default     = null
-  description = "Enable public DNS query logging for the hosted zone"
 }
 
 variable "tags" {

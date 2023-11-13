@@ -26,7 +26,7 @@ module "for_each" {
   tags      = {}
 }
 
-// Test single zone with DNS query logging enabled
+// Test zone with DNS query logging enabled
 module "query_logging" {
   source            = "../.."
   providers         = { aws = aws, aws.kms = aws.kms, aws.dns_query_logging = aws.dns_query_logging }
