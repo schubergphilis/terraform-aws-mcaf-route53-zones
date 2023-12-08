@@ -25,7 +25,7 @@ resource "aws_cloudwatch_log_group" "dns_query_logging" {
 }
 
 resource "aws_cloudwatch_log_resource_policy" "dns_query_logging" {
-  count    = var.dns_query_logging != null ? 1 : 0
+  count    = try(var.dns_query_logging.create_log_resource_policy, false) ? 1 : 0
   provider = aws.dns_query_logging
 
   policy_document = data.aws_iam_policy_document.dns_query_logging[0].json
