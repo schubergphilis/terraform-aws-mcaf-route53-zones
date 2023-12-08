@@ -58,7 +58,7 @@ No modules.
 | <a name="input_tags"></a> [tags](#input\_tags) | Map of tags to set on Terraform created resources | `map(string)` | n/a | yes |
 | <a name="input_comment"></a> [comment](#input\_comment) | Comment for the hosted zone | `string` | `null` | no |
 | <a name="input_delegation_set_id"></a> [delegation\_set\_id](#input\_delegation\_set\_id) | Delegation set ID whose NS records will be used by the hosted zone; conflicts with `var.vpc` as delegation sets can only be used with public zones | `string` | `null` | no |
-| <a name="input_dns_query_logging"></a> [dns\_query\_logging](#input\_dns\_query\_logging) | Enable public DNS query logging for the hosted zone | <pre>object({<br>    retention_in_days = number<br>  })</pre> | `null` | no |
+| <a name="input_dns_query_logging"></a> [dns\_query\_logging](#input\_dns\_query\_logging) | Enable public DNS query logging for the hosted zone | <pre>object({<br>    retention_in_days          = number<br>    create_log_resource_policy = optional(bool, true)<br>  })</pre> | `null` | no |
 | <a name="input_dnssec"></a> [dnssec](#input\_dnssec) | Set to true to enable DNSSEC signing | `bool` | `false` | no |
 | <a name="input_force_destroy"></a> [force\_destroy](#input\_force\_destroy) | Set to true to destroy all records when destroying the managed zone | `bool` | `false` | no |
 | <a name="input_kms_signing_key_settings"></a> [kms\_signing\_key\_settings](#input\_kms\_signing\_key\_settings) | KMS key settings used for zone signing | <pre>object({<br>    deletion_window_in_days = optional(number, 30)<br>  })</pre> | <pre>{<br>  "deletion_window_in_days": 30<br>}</pre> | no |
@@ -69,7 +69,7 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_route53_zone_arn"></a> [route53\_zone\_arn](#output\_route53\_zone\_arn) | ARN of Route53 zone |
+| <a name="output_route53_zone_id"></a> [route53\_zone\_id](#output\_route53\_zone\_id) | Zone ID of Route53 zone |
 | <a name="output_route53_zone_name"></a> [route53\_zone\_name](#output\_route53\_zone\_name) | Name of Route53 zone |
 | <a name="output_route53_zone_name_servers"></a> [route53\_zone\_name\_servers](#output\_route53\_zone\_name\_servers) | Name servers of Route53 zone |
-| <a name="output_route53_zone_zone_id"></a> [route53\_zone\_zone\_id](#output\_route53\_zone\_zone\_id) | Zone ID of Route53 zone |
 <!-- END_TF_DOCS -->
