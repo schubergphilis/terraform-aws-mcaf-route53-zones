@@ -48,6 +48,7 @@ variable "name" {
 
 variable "tags" {
   type        = map(string)
+  default     = {}
   description = "Map of tags to set on Terraform created resources"
 }
 
@@ -58,4 +59,10 @@ variable "vpc" {
   })
   default     = null
   description = "VPC ID and region; conflicts with `var.delegation_set_id`"
+}
+
+variable "ignore_changes" {
+  type        = list(string)
+  default     = []
+  description = "List of attributes that should be ignored when changes are detected"
 }
