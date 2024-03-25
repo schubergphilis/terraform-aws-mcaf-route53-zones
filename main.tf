@@ -5,6 +5,7 @@ resource "aws_route53_zone" "default" {
   comment           = var.comment
   force_destroy     = var.force_destroy
   delegation_set_id = var.delegation_set_id
+  tags              = var.tags
 
   dynamic "vpc" {
     for_each = var.vpc != null ? { create = true } : {}
@@ -15,5 +16,7 @@ resource "aws_route53_zone" "default" {
     }
   }
 
-  tags = var.tags
+  lifecycle {
+    ignore_changes = [var.ignore_changes]
+  }
 }
