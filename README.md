@@ -55,13 +55,13 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_name"></a> [name](#input\_name) | The hosted zone name | `string` | n/a | yes |
-| <a name="input_tags"></a> [tags](#input\_tags) | Map of tags to set on Terraform created resources | `map(string)` | n/a | yes |
 | <a name="input_comment"></a> [comment](#input\_comment) | Comment for the hosted zone | `string` | `null` | no |
 | <a name="input_delegation_set_id"></a> [delegation\_set\_id](#input\_delegation\_set\_id) | Delegation set ID whose NS records will be used by the hosted zone; conflicts with `var.vpc` as delegation sets can only be used with public zones | `string` | `null` | no |
 | <a name="input_dns_query_logging"></a> [dns\_query\_logging](#input\_dns\_query\_logging) | Enable public DNS query logging for the hosted zone | <pre>object({<br>    retention_in_days          = number<br>    create_log_resource_policy = optional(bool, true)<br>  })</pre> | `null` | no |
 | <a name="input_dnssec"></a> [dnssec](#input\_dnssec) | Set to true to enable DNSSEC signing | `bool` | `false` | no |
 | <a name="input_force_destroy"></a> [force\_destroy](#input\_force\_destroy) | Set to true to destroy all records when destroying the managed zone | `bool` | `false` | no |
 | <a name="input_kms_signing_key_settings"></a> [kms\_signing\_key\_settings](#input\_kms\_signing\_key\_settings) | KMS key settings used for zone signing | <pre>object({<br>    deletion_window_in_days = optional(number, 30)<br>  })</pre> | <pre>{<br>  "deletion_window_in_days": 30<br>}</pre> | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | Map of tags to set on Terraform created resources | `map(string)` | `null` | no |
 | <a name="input_vpc"></a> [vpc](#input\_vpc) | VPC ID and region; conflicts with `var.delegation_set_id` | <pre>object({<br>    id     = string<br>    region = string<br>  })</pre> | `null` | no |
 
 ## Outputs
