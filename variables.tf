@@ -12,8 +12,9 @@ variable "delegation_set_id" {
 
 variable "dns_query_logging" {
   type = object({
-    retention_in_days          = number
     create_log_resource_policy = optional(bool, true)
+    kms_key_arn                = optional(string, null)
+    retention_in_days          = number
   })
   default     = null
   description = "Enable public DNS query logging for the hosted zone"

@@ -21,6 +21,7 @@ resource "aws_cloudwatch_log_group" "dns_query_logging" {
   provider = aws.dns_query_logging
 
   name              = "/aws/route53/${aws_route53_zone.default.name}"
+  kms_key_id        = var.dns_query_logging.kms_key_arn
   retention_in_days = var.dns_query_logging.retention_in_days
 }
 
