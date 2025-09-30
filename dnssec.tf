@@ -27,7 +27,7 @@ data "aws_iam_policy_document" "dnssec_signing" {
     condition {
       test     = "StringEquals"
       variable = "aws:SourceAccount"
-      values   = ["${data.aws_caller_identity.kms.account_id}"]
+      values   = [data.aws_caller_identity.kms.account_id]
     }
 
     condition {

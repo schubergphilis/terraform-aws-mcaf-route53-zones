@@ -49,7 +49,7 @@ variable "name" {
 
 variable "tags" {
   type        = map(string)
-  default     = null
+  default     = {}
   description = "Map of tags to set on Terraform created resources"
 }
 
