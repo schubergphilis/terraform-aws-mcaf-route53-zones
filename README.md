@@ -6,11 +6,7 @@ Terraform module to setup and manage route53 zones.
 
 To establish a chain of trust for DNSSEC, you must update the parent zone for your hosted zone with a DNSSEC 'DS' record.
 
-Additionally, using this feature [requires an AWS provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_hosted_zone_dnssec) in region `us-east-1`.
-
 ## DNS Query Logging
-
-Using this feature [requires an AWS provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_query_log) in region `us-east-1`.
 
 Since there is a [hard limit](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/cloudwatch_limits_cwl.html) on the amount of Resource policies (`aws_cloudwatch_log_resource_policy`), the creation of this can be disabled. If there are multiple hosted zones it's then better to create it outside this module. Can be disabled by specifying `create_log_resource_policy = false` in the `dns_query_logging`.
 

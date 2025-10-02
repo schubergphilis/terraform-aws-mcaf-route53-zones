@@ -3,9 +3,8 @@ terraform {
 
   required_providers {
     aws = {
-      source                = "hashicorp/aws"
-      version               = ">= 3.67"
-      configuration_aliases = [aws.kms, aws.dns_query_logging]
+      source  = "hashicorp/aws"
+      version = "~> 6.0"
     }
   }
 }
