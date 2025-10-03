@@ -1,3 +1,7 @@
+locals {
+  global_region = "us-east-1"
+}
+
 resource "aws_route53_zone" "default" {
   # https://github.com/bridgecrewio/checkov/issues/3562#issuecomment-1256892542
   #checkov:skip=CKV2_AWS_39: "Ensure Domain Name System (DNS) query logging is enabled for Amazon Route 53 hosted zones"

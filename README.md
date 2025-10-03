@@ -6,11 +6,7 @@ Terraform module to setup and manage route53 zones.
 
 To establish a chain of trust for DNSSEC, you must update the parent zone for your hosted zone with a DNSSEC 'DS' record.
 
-Additionally, using this feature [requires an AWS provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_hosted_zone_dnssec) in region `us-east-1`.
-
 ## DNS Query Logging
-
-Using this feature [requires an AWS provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_query_log) in region `us-east-1`.
 
 Since there is a [hard limit](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/cloudwatch_limits_cwl.html) on the amount of Resource policies (`aws_cloudwatch_log_resource_policy`), the creation of this can be disabled. If there are multiple hosted zones it's then better to create it outside this module. Can be disabled by specifying `create_log_resource_policy = false` in the `dns_query_logging`.
 
@@ -20,15 +16,13 @@ Since there is a [hard limit](https://docs.aws.amazon.com/AmazonCloudWatch/lates
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.67 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 6.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 3.67 |
-| <a name="provider_aws.dns_query_logging"></a> [aws.dns\_query\_logging](#provider\_aws.dns\_query\_logging) | >= 3.67 |
-| <a name="provider_aws.kms"></a> [aws.kms](#provider\_aws.kms) | >= 3.67 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 6.0 |
 
 ## Modules
 
@@ -45,10 +39,9 @@ No modules.
 | [aws_route53_key_signing_key.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_key_signing_key) | resource |
 | [aws_route53_query_log.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_query_log) | resource |
 | [aws_route53_zone.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_zone) | resource |
-| [aws_caller_identity.kms](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_iam_policy_document.dns_query_logging](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.dnssec_signing](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
-| [aws_region.kms](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) | data source |
 
 ## Inputs
 
